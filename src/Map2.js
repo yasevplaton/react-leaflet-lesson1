@@ -2,6 +2,7 @@ import React from "react";
 import L from 'leaflet';
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import './Map.css';
+import SelectComponent from "./selectComponent";
 
 // указываем путь к файлам marker
 L.Icon.Default.imagePath = "https://unpkg.com/leaflet@1.5.0/dist/images/";
@@ -15,14 +16,14 @@ class MapComponent extends React.Component {
 
   render() {
     var center = [this.state.lat, this.state.lng];
-
+  
     return (
-      <Map zoom={this.state.zoom} center={center}>
+      <Map zoom={this.state.zoom} center={center} keyboard={false}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
+        <SelectComponent />
         <Marker position={center}>
           <Popup>Какой то крутой текст!!!</Popup>
         </Marker>
